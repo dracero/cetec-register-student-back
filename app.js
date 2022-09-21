@@ -29,8 +29,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Middleware sesssion persists in Mongo
 app.use(session({
@@ -68,7 +67,7 @@ jwtOptions.secretOrKey = process.env.JWT_SECRET_KEY;
 passport.use(new GoogleStrategy({
   clientID:     GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.BACK_URL + " ",
+  callbackURL: process.env.BACK_URL + "/auth/google/callback",
   passReqToCallback   : true
   }, authUser));
 
@@ -96,7 +95,7 @@ app.get('/auth/google',
     ]
   })
 );
-//esto es una prueba para ver por què lo dejò vacìo
+
 app.get(
   '/auth/google/callback',
   passport.authenticate("google"),
