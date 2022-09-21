@@ -96,7 +96,7 @@ app.get('/auth/google',
     ]
   })
 );
-
+//esto es una prueba para ver por què lo dejò vacìo
 app.get(
   '/auth/google/callback',
   passport.authenticate("google"),
