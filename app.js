@@ -68,7 +68,7 @@ jwtOptions.secretOrKey = process.env.JWT_SECRET_KEY;
 passport.use(new GoogleStrategy({
   clientID:     GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.BACK_URL + "/auth/google/callback",
+  callbackURL: process.env.BACK_URL + " ",
   passReqToCallback   : true
   }, authUser));
 
